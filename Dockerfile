@@ -3,7 +3,6 @@ FROM circleci/php:7.2-fpm-node-browsers
 # ... 
 
 RUN sudo apt-get update && apt-get install -y \
-    libpq-dev \
     libmemcached-dev \
     curl
 
