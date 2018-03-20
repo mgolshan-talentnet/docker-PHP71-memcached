@@ -48,18 +48,6 @@ RUN docker-php-ext-install pdo_pgsql
 # RUN apt-get install -y libsqlite3-dev
 # RUN docker-php-ext-install pdo_sqlite
 
-# Install phpredis 2.2.7
-RUN apt-get install -y unzip
-WORKDIR /root
-COPY phpredis-2.2.7.zip phpredis-2.2.7.zip
-RUN unzip phpredis-2.2.7.zip
-WORKDIR phpredis-2.2.7
-RUN phpize
-RUN ./configure
-RUN make && make install
-#RUN cp /root/phpredis-2.2.7/modules/redis.so /usr/local/lib/php/extensions/no-debug-non-zts-20151012/
-RUN echo "extension=redis.so" > /usr/local/etc/php/conf.d/redis.ini
-
 # Install XSL
 RUN apt-get install -y libxslt-dev
 RUN docker-php-ext-install xsl
@@ -89,7 +77,7 @@ RUN pecl install intl
 RUN docker-php-ext-install intl
 
 
-# Install composer
+# Install curl and composer
 RUN apt-get install curl
 RUN curl -sS https://getcomposer.org/installer -o composer-setup.php
 RUN php -r "if (hash_file('SHA384', 'composer-setup.php') === '669656bab3166a7aff8a7506b8cb2d1c292f042046c5a994c43155c0be6190fa0355160742ab2e1c88d40d5be660b410') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
