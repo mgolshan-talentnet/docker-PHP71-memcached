@@ -66,12 +66,12 @@ RUN mv composer.phar /usr/local/bin/composer
 RUN apt-get install -y wget
 RUN apt-get install -y libmemcached-dev zlib1g-dev libncurses5-dev
 RUN wget https://pecl.php.net/get/memcached-2.2.0.tgz
-RUN mkdir /usr/local/etc/php/ext
-RUN mkdir /usr/local/etc/php/ext/memcached-2.2.0
-RUN tar -xvzf memcached-2.2.0.tgz /usr/local/etc/php/ext/memcached-2.2.0
-RUN lc -l /usr/local/etc/php/ext/memcached-2.2.0
-RUN rm memcached-2.2.0.tgz
-RUN docker-php-ext-install memcached-2.2.0
+RUN mkdir /usr/local/etc/php/ext \
+  && mkdir /usr/local/etc/php/ext/memcached-2.2.0 \
+  && tar -xvzf memcached-2.2.0.tgz /usr/local/etc/php/ext/memcached-2.2.0 \
+  && lc -l /usr/local/etc/php/ext/memcached-2.2.0 \
+  && rm memcached-2.2.0.tgz \
+  && docker-php-ext-install memcached-2.2.0
 
 # Install mongo
 #RUN pecl install mongodb-beta
