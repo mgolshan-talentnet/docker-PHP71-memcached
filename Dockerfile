@@ -63,6 +63,7 @@ RUN mv composer.phar /usr/local/bin/composer
 
 
 # Install memcached
+RUN apt-get install -y wget
 RUN apt-get install -y libmemcached-dev zlib1g-dev libncurses5-dev
 RUN wget https://pecl.php.net/get/memcached-2.2.0.tgz
 RUN mkdir /usr/local/etc/php/ext
