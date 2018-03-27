@@ -7,7 +7,16 @@ RUN sudo apt install memcached
 RUN sudo service php7.1-fpm restart
 RUN php -m
 
-RUN sudo apt install php-memcached
+RUN git clone --depth 1 https://github.com/php-memcached-dev/php-memcached.git \
+  && cd php-memcached \
+  && phpize ./configure make
+
+RUN sudo mv modules/ /usr/local/memcached/
+RUN echo 'extension=/usr/local/memcached/memcached.so' | \
+sudo tee /usr/local/bin/php/cli/conf.d/memcached.ini
+RUN echo 'extension=/usr/local/memcached/memcached.so' | \
+sudo tee /usr/local/bin/php/fpm/conf.d/memcached.ini
+
 RUN sudo service php7.1-fpm restart
 
 RUN php -m
