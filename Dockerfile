@@ -10,12 +10,13 @@ RUN php -m && pwd
 RUN cd ~/ \
   && git clone --depth 1 https://github.com/php-memcached-dev/php-memcached.git \
   && cd php-memcached \
-  && phpize ./configure make
+  && phpize ./configure make \
+  && pwd
 
-RUN sudo mv modules/ /usr/local/memcached/
-RUN echo 'extension=/usr/local/memcached/memcached.so' | \
+#RUN sudo mv modules/ /usr/local/memcached/
+RUN echo 'extension=~/php-memcached/memcached.so' | \
 sudo tee /usr/local/bin/php/cli/conf.d/memcached.ini
-RUN echo 'extension=/usr/local/memcached/memcached.so' | \
+RUN echo 'extension=~/php-memcached/memcached.so' | \
 sudo tee /usr/local/bin/php/fpm/conf.d/memcached.ini
 
 #RUN sudo service php7.1-fpm restart
