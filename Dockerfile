@@ -6,6 +6,7 @@ RUN sudo apt-get update
 RUN sudo apt install memcached
 #RUN sudo service php7.1-fpm restart
 RUN php -m && pwd
+RUN yum install zlib-devel
 
 RUN cd ~/ \
   && git clone --depth 1 https://github.com/php-memcached-dev/php-memcached.git \
