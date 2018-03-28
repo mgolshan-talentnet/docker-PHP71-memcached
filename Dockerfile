@@ -13,8 +13,9 @@ RUN cd ~/ \
   && phpize ./configure make \
   && pwd
 
-RUN php -i |grep php\.ini
-RUN php -m
+RUN ls -l /usr/local/etc/php
+RUN echo "----------------------------------------------"
+RUN cat /usr/local/etc/php/php.ini
 
 #RUN sudo mv modules/ /usr/local/memcached/
 #RUN echo 'extension=~/php-memcached/memcached.so' | \
