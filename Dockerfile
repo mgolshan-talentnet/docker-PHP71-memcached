@@ -13,6 +13,7 @@ RUN cd ~/ \
   && phpize ./configure make \
   && pwd
 
+RUN php -i |grep php\.ini
 RUN php -m
 
 #RUN sudo mv modules/ /usr/local/memcached/
