@@ -13,15 +13,16 @@ RUN cd ~/ \
   && phpize ./configure make \
   && pwd
 
-RUN ls -l /usr/local/etc/php
+RUN ls -l /usr/local/etc/php/conf.d
 RUN echo "----------------------------------------------"
-RUN cat /usr/local/etc/php/php.ini
 
 #RUN sudo mv modules/ /usr/local/memcached/
 #RUN echo 'extension=~/php-memcached/memcached.so' | \
 #sudo tee /usr/local/bin/php/cli/conf.d/memcached.ini
 #RUN echo 'extension=~/php-memcached/memcached.so' | \
 #sudo tee /usr/local/bin/php/fpm/conf.d/memcached.ini
+
+RUN ls -l /usr/local/bin/php/
 
 #RUN sudo service php7.1-fpm restart
 
