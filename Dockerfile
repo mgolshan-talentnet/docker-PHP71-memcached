@@ -14,6 +14,7 @@ RUN cd ~/ \
   && pwd
 
 RUN ls -l /usr/local/etc/php/conf.d
+RUN ls -l ~/php-memcached
 RUN echo "----------------------------------------------"
 
 #RUN sudo mv modules/ /usr/local/memcached/
