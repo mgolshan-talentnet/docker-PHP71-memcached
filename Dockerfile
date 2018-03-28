@@ -10,7 +10,7 @@ RUN php -m && pwd
 RUN cd ~/ \
   && git clone --depth 1 https://github.com/php-memcached-dev/php-memcached.git \
   && cd php-memcached \
-  && phpize ./configure make \
+  && phpize && ./configure && make \
   && pwd
 
 RUN ls -l /usr/local/etc/php/conf.d
