@@ -17,12 +17,12 @@ RUN ls -l /usr/local/etc/php/conf.d
 RUN echo "----------------------------------------------"
 
 #RUN sudo mv modules/ /usr/local/memcached/
-#RUN echo 'extension=~/php-memcached/memcached.so' | \
-#sudo tee /usr/local/bin/php/cli/conf.d/memcached.ini
+RUN echo 'extension=/home/circleci/php-memcached/memcached.so' | \
+sudo tee /usr/local/etc/php/conf.d/memcached.ini
 #RUN echo 'extension=~/php-memcached/memcached.so' | \
 #sudo tee /usr/local/bin/php/fpm/conf.d/memcached.ini
 
-RUN ls -l /usr/local/bin/php/
+RUN ls -l /usr/local/bin/php
 
 #RUN sudo service php7.1-fpm restart
 
