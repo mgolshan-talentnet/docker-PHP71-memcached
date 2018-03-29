@@ -5,7 +5,7 @@ The composer is enabled.<br />
 The user access: root<br />
 
 #### The list of loaded modules:
-apcu<br /><br />
+apcu<br />
 bcmath<br />
 bz2<br />
 calendar<br />
