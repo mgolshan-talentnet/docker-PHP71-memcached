@@ -103,6 +103,9 @@ RUN apt -y install vim
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN composer --version
 
+# Install Git
+RUN echo Y | apt-get install git-core
+
 # Include the start script
 COPY start.sh /usr/local/bin/start.sh
 RUN chmod +x /usr/local/bin/start.sh
