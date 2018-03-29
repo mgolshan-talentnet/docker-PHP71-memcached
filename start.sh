@@ -13,3 +13,4 @@ fi
 
 # Start php-fpm
 php-fpm --allow-to-run-as-root
+service memcached start

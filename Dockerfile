@@ -67,6 +67,7 @@ RUN docker-php-ext-install xsl
 RUN docker-php-ext-install xmlrpc
 
 # Install memcached
+RUN echo Y | 106+apt-get install memcached
 COPY memcached-2.2.0.zip memcached-2.2.0.zip
 RUN apt-get install -y libmemcached-dev zlib1g-dev libncurses5-dev
 RUN mkdir /usr/src/php && mkdir /usr/src/php/ext
