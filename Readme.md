@@ -1,6 +1,6 @@
 # docker-PHP71-memcached
 
-The installed memcached version is 2.2.0<br />
+The installed php memcached version is 2.2.0<br />
 Composer is installed.<br />
 Git is installed.<br />
 The user access: root<br />
