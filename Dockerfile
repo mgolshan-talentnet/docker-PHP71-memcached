@@ -53,9 +53,7 @@ WORKDIR /root
 COPY phpredis-2.2.7.zip phpredis-2.2.7.zip
 RUN unzip phpredis-2.2.7.zip
 WORKDIR phpredis-2.2.7
-RUN phpize
-RUN ./configure
-RUN make && make install
+RUN phpize && ./configure && make && make install
 #RUN cp /root/phpredis-2.2.7/modules/redis.so /usr/local/lib/php/extensions/no-debug-non-zts-20151012/
 RUN echo "extension=redis.so" > /usr/local/etc/php/conf.d/redis.ini
 
@@ -67,13 +65,10 @@ RUN docker-php-ext-install xsl
 RUN docker-php-ext-install xmlrpc
 
 # Install memcached
-RUN echo Y | apt-get install memcached
 COPY memcached-2.2.0.zip memcached-2.2.0.zip
-RUN apt-get install -y libmemcached-dev zlib1g-dev libncurses5-dev
-RUN mkdir /usr/src/php && mkdir /usr/src/php/ext
-RUN mkdir /usr/src/php/ext/memcached-2.2.0
-RUN unzip memcached-2.2.0.zip -d /usr/src/php/ext/memcached-2.2.0
-RUN rm memcached-2.2.0.zip
+RUN apt-get install -y memcached libmemcached-dev zlib1g-dev libncurses5-dev
+RUN mkdir /usr/src/php && mkdir /usr/src/php/ext && mkdir /usr/src/php/ext/memcached-2.2.0
+RUN unzip memcached-2.2.0.zip -d /usr/src/php/ext/memcached-2.2.0 && rm memcached-2.2.0.zip
 RUN docker-php-ext-install memcached-2.2.0
 
 # Install MongoDB library
@@ -99,6 +94,9 @@ RUN docker-php-ext-install ftp
 
 # Install Vim
 RUN apt -y install vim
+
+# Install Net Tools
+RUN apt -y install net-tools
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
