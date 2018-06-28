@@ -53,6 +53,7 @@ xmlwriter<br />
 xsl<br />
 yaml<br />
 Zend OPcache<br />
+zip<br />
 zlib<br />
 
 [Zend Modules]<br />
