@@ -93,7 +93,7 @@ RUN echo "extension=yaml.so" > /usr/local/etc/php/conf.d/yaml.ini
 #RUN echo "extension=mongo.so" > /usr/local/etc/php/conf.d/mongo.ini
 
 # Install ftp
-RUN docker-php-ext-install ftp
+#RUN docker-php-ext-install ftp
 
 # Install intl
 #RUN apt-get install -y libicu-dev
@@ -104,7 +104,7 @@ RUN docker-php-ext-install ftp
 RUN apt -y install vim
 
 # Install Net Tools
-RUN apt -y install net-tools
+#RUN apt -y install net-tools
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
