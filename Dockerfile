@@ -61,6 +61,9 @@ RUN echo "extension=redis.so" > /usr/local/etc/php/conf.d/redis.ini
 RUN apt-get install -y libxslt-dev
 RUN docker-php-ext-install xsl
 
+# Install ZipLib
+RUN apt-get install -y libzip-dev
+
 # Install xmlrpc
 RUN docker-php-ext-install xmlrpc
 
@@ -74,6 +77,10 @@ RUN docker-php-ext-install memcached-2.2.0
 # Install MongoDB library
 RUN pecl install mongodb
 RUN echo "extension=mongodb.so" > /usr/local/etc/php/conf.d/mongodb.ini
+
+# Install Zip library
+RUN pecl install zip
+RUN echo "extension=zip.so" > /usr/local/etc/php/conf.d/zip.ini
 
 # install yaml
 RUN echo Y | apt-get install libyaml-dev
